@@ -9,4 +9,8 @@ public class Order {
     public double getTotal() {
         return 0;
     }
+
+    public String getAddress() {
+        return null;
+    }
 }

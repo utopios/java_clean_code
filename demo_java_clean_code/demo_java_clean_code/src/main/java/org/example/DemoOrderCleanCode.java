@@ -75,5 +75,25 @@ public class DemoOrderCleanCode {
         double tax = order.getTotal() * 0.20;
         return tax;
     }
+
+
+    public void processOrder(Order order) {
+        // Validation de la commande
+        if (order.getItems().isEmpty()) {
+            throw new IllegalArgumentException("Order is empty");
+        }
+
+        // Calcul du prix total
+        double total = 0;
+        for (Item item : order.getItems()) {
+            total += item.getPrice();
+        }
+
+        // Impression des détails
+        System.out.println("Total: " + total);
+
+        // Expédition
+        System.out.println("Shipping to: " + order.getAddress());
+    }
 }
 
