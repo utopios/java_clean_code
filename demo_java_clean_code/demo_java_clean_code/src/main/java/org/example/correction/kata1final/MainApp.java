@@ -2,6 +2,7 @@ package org.example.correction.kata1final;
 
 public class MainApp {
     public static void main(String[] args){
+
         final int MAX_PRIMES = 1000;
         final int ROWS_PER_PAGE = 50;
         final int COLUMNS_PER_PAGE = 4;
