@@ -5,4 +5,8 @@ public class Order {
     public List<Item> getItems() {
         return null;
     }
+
+    public double getTotal() {
+        return 0;
+    }
 }
