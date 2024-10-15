@@ -5,8 +5,8 @@ public class Engineer extends  Employee {
         super(salary);
     }
 
-    @Override
+    /*@Override
     public double payAmount() {
         return getSalary();
-    }
+    }*/
 }

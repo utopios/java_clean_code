@@ -13,8 +13,8 @@ public class Manager extends Employee {
         return bonus;
     }
 
-    @Override
+    /*@Override
     public double payAmount() {
         return getSalary() + getBonus();
-    }
+    }*/
 }

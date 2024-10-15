@@ -1,6 +1,6 @@
 package org.example.jour2.ocpsolution;
 
-public abstract class Employee implements Payable {
+public abstract class Employee {
     private final double salary;
     //private final double bonus;
 
