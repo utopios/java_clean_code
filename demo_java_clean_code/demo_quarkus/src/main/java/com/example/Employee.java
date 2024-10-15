@@ -1,7 +1,12 @@
 package com.example;
 
+import lombok.Builder;
+import lombok.Data;
+
 import java.time.LocalDate;
 
+@Data
+@Builder
 public class Employee {
     private final String firstName;
     private final String lastName;
@@ -29,5 +34,9 @@ public class Employee {
 
     public String getEmail() {
         return email;
+    }
+
+    private void test() {
+        Employee employee = Employee.builder().email("").firstName("").build();
     }
 }
