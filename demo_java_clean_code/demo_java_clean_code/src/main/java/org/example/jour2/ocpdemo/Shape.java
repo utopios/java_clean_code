@@ -1,4 +1,4 @@
-package org.example.jour2.ocp;
+package org.example.jour2.ocpdemo;
 
 /*public class Shape {
     public double calculateArea(Object shape) {
