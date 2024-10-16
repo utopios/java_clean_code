@@ -10,8 +10,4 @@ public class Portfolio {
         this.investments = investments;
     }
 
-
-    public void displayInvestments() {
-
-    }
 }
