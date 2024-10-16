@@ -1,7 +1,14 @@
 package org.example.demotdd;
 
 public class FizzBuzz {
-    public String say(int i) {
-        return String.valueOf(i);
+    public String say(int number) {
+        if(number%3 == 0 && number%5 ==0) {
+            return "FizzBuzz";
+        } else if(number%3 ==0) {
+            return "Fizz";
+        } else if(number%5 ==0) {
+            return "Buzz";
+        }
+        return String.valueOf(number);
     }
 }
