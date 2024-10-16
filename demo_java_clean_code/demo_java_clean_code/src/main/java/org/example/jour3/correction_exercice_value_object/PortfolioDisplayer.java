@@ -10,6 +10,8 @@ public class PortfolioDisplayer {
 
 
     public void display() {
-
+        this.portfolio.getInvestments().forEach(investment -> {
+            System.out.println(investment);
+        });
     }
 }

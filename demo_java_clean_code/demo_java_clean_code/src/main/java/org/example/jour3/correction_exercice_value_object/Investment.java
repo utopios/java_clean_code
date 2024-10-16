@@ -29,6 +29,15 @@ public class Investment {
         return targetInvestment.totalValue() == this.totalValue();
     }
 
+    @Override
+    public String toString() {
+        return "Investment{" +
+                "name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", valuePerUnit=" + valuePerUnit +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
