@@ -19,10 +19,21 @@ public class OrderManager {
     }
 
     public void processOrder(Order order) throws InvalidOrderException, InsufficientStockException {
+        double subtotal = 0;
         validateOrder(order);
-        double total = calculateTotal(order);
+        /*double total = calculateTotal(order);
         checkStock(order);
-        updateStock(order);
+        updateStock(order);*/
+        for(Item item: order.getItems()) {
+            int stock = stockService.getStockForItem(item); 
+            if (stock < item.getQuantity()) {
+                throw new InsufficientStockException("Stock insuffisant pour l'article : " + item.getName());
+            }
+            subtotal += item.getPrice() * item.getQuantity();
+            double taxes = taxService.calculateTax(subtotal);
+            subtotal += taxes;
+            stockService.updateStock(item, item.getQuantity());            
+        }
         notificationService.sendOrderConfirmation(order, total);
     }
 
