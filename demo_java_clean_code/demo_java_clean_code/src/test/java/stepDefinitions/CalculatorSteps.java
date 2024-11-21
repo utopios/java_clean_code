@@ -21,6 +21,12 @@ public class CalculatorSteps {
         total = calculator.add(a, b);
     }
 
+    @When("I subtract {int} from {int}")
+    public void i_subtract_from(int b, int a) {
+        total = calculator.subtract(a, b);
+    }
+
+
     @Then("the result should be {int}")
     public void the_result_should_be(int expectedTotal) {
         assertEquals(expectedTotal, total);
