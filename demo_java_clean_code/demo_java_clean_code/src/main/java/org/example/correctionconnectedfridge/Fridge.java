@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Fridge {
 
@@ -33,8 +34,14 @@ public class Fridge {
         return items.stream().filter(element -> element.getName().equals(itemsName)).findFirst();
     }
 
+    //No Respect of Solid
     public String displayItems() {
-        return items.stream()
+
+        Stream<Item> displayElementsInsideFridge = items.stream();
+        Stream<String> displayStringElementInsideFridge = displayElementsInsideFridge.map(item ->getStringItemInsideFridge(item));
+        return displayStringElementInsideFridge.collect(Collectors.joining("\n"));
+
+        /*return items.stream()
                 .sorted(Comparator.comparing(Item::getExpirationDate))
                 .map(item -> {
                     if (item.getExpirationDate().isBefore(LocalDateTime.now())) {
@@ -44,6 +51,15 @@ public class Fridge {
                         return item.getName() + ": " + daysRemaining + " day(s) remaining";
                     }
                 })
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n"));*/
+    }
+
+    private String getStringItemInsideFridge(Item item) {
+        if (item.getExpirationDate().isBefore(LocalDateTime.now())) {
+            return "EXPIRED: " + item.getName();
+        } else {
+            long daysRemaining = Duration.between(LocalDateTime.now(), item.getExpirationDate()).toDays();
+            return item.getName() + ": " + daysRemaining + " day(s) remaining";
+        }
     }
 }
