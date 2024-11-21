@@ -12,8 +12,8 @@ L’équipe de recherche et développement vous a fourni les exigences suivantes
    - Date d’expiration
    - Horodatage du moment où il a été ajouté
 3. Lorsque le réfrigérateur est ouvert, les articles déjà à l’intérieur voient leur date de péremption se dégrader :
-   - De 1 heure (si le réfrigérateur est scellé)
-   - De 5 heures (si le réfrigérateur est ouvert)
+   - De 1 heure (si l'item est scellé)
+   - De 5 heures (si l'item est ouvert)
 4. Fournir un affichage formaté pour visualiser le contenu et le temps restant avant expiration :
    - Les articles expirés sont affichés en premier avec : `"EXPIRÉ : $item.name"`
    - Les articles non expirés sont affichés ensuite avec : `"$item.name : n jour(s) restant(s)"`
