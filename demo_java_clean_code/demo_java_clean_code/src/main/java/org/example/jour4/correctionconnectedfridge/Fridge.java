@@ -1,7 +1,6 @@
-package org.example.correctionconnectedfridge;
+package org.example.jour4.correctionconnectedfridge;
 
 import java.time.Duration;
-import java.util.Comparator;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

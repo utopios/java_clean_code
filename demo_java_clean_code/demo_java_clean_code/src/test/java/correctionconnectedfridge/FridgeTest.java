@@ -1,12 +1,11 @@
 package correctionconnectedfridge;
 
-import org.example.correctionconnectedfridge.Fridge;
-import org.example.correctionconnectedfridge.Item;
-import org.example.demotdd.FizzBuzz;
+import org.example.jour4.correctionconnectedfridge.Fridge;
+import org.example.jour4.correctionconnectedfridge.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;

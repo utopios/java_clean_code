@@ -1,6 +1,4 @@
-package org.example.correctionconnectedfridge;
-
-import lombok.Builder;
+package org.example.jour4.correctionconnectedfridge;
 
 import java.time.LocalDateTime;
 
