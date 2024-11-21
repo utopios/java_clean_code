@@ -8,42 +8,81 @@ Vous disposez d'une classe `OrderManager` qui gère les commandes clients. Le co
 
 ```java
 public class OrderManager {
-    public void processOrder(Order order) {
-        // Validation de la commande
-        if (order != null) {
-            if (order.getItems() != null && !order.getItems().isEmpty()) {
-                // Calcul du total
-                double total = 0;
-                for (Item item : order.getItems()) {
-                    total += item.getPrice() * item.getQuantity();
-                }
-                // Application des taxes
-                double taxes = total * 0.2;
-                total += taxes;
-                // Vérification du stock
-                for (Item item : order.getItems()) {
-                    int stock = getStockForItem(item);
-                    if (stock < item.getQuantity()) {
-                        System.out.println("Stock insuffisant pour l'article : " + item.getName());
-                        return;
-                    }
-                }
-                // Mise à jour du stock
-                for (Item item : order.getItems()) {
-                    updateStock(item, item.getQuantity());
-                }
-                // Envoi de la confirmation
-                sendOrderConfirmation(order, total);
-            } else {
-                System.out.println("La commande ne contient aucun article.");
+    private StockService stockService;
+    private TaxService taxService;
+    private NotificationService notificationService;
+
+    public OrderManager(StockService stockService, TaxService taxService, NotificationService notificationService) {
+        this.stockService = stockService;
+        this.taxService = taxService;
+        this.notificationService = notificationService;
+    }
+
+    public void processOrder(Order order) throws InvalidOrderException, InsufficientStockException {
+        validateOrder(order);
+        double total = calculateTotal(order);
+        checkStock(order);
+        updateStock(order);
+        notificationService.sendOrderConfirmation(order, total);
+    }
+
+    private void validateOrder(Order order) throws InvalidOrderException  {
+            if(order == null || order.getItems() == null || order.getItems().isEmpty()) {
+                throw new InvalidOrderException("La commande est invalide");
             }
-        } else {
-            System.out.println("Commande invalide.");
+    }
+
+    private double calculateTotal(Order order) {
+        double subtotal = 0;
+        for (Item item : order.getItems()) {
+            subtotal += item.getPrice() * item.getQuantity();
+        }
+        double taxes = taxService.calculateTax(subtotal);
+        return subtotal + taxes;
+    }
+
+    private void checkStock(Order order) throws InsufficientStockException {
+        for (Item item : order.getItems()) {
+            int stock = stockService.getStockForItem(item);
+            if (stock < item.getQuantity()) {
+                throw new InsufficientStockException("Stock insuffisant pour l'article : " + item.getName());
+            }
         }
     }
 
-    // Autres méthodes : getStockForItem, updateStock, sendOrderConfirmation
+    private void updateStock(Order order) {
+        for (Item item : order.getItems()) {
+            stockService.updateStock(item, item.getQuantity());
+        }
+    }
+
 }
+
+public interface TaxService {
+    double calculateTax(double amount);
+}
+
+public interface StockService {
+    int getStockForItem(Item item);
+    void updateStock(Item item, int quantity);
+}
+
+public interface NotificationService {
+    void sendOrderConfirmation(Order order, double total);
+}
+
+public class InsufficientStockException extends Exception {
+    public InsufficientStockException(String message) {
+        super(message);
+    }
+}
+
+public class InvalidOrderException extends Exception {
+    public InvalidOrderException(String message) {
+        super(message);
+    }
+}
+
 ```
 
 
