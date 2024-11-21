@@ -1,4 +1,6 @@
 package org.example;
+import org.example.correctionconnectedfridge.Item;
+
 import java.util.List;
 public class Order {
 

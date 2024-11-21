@@ -1,5 +1,7 @@
 package org.example;
 
+
+
 public class DemoOrderCleanCode {
 
     // Mauvais code : la méthode fait trop de choses
