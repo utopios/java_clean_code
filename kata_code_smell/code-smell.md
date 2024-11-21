@@ -130,6 +130,67 @@ public class PriceCalculator {
 }
 ```
 
+```java
+public abstract class Product {
+    protected double basePrice;
+
+    public Product(double basePrice) {
+        this.basePrice = basePrice;
+    }
+
+    public abstract double calculatePrice();
+}
+
+public class ElectronicsProduct extends Product {
+    private boolean onSale;
+
+    public ElectronicsProduct(double basePrice, boolean onSale) {
+        super(basePrice);
+        this.onSale = onSale;
+    }
+
+    @Override
+    public double calculatePrice() {
+        double price = basePrice + basePrice * 0.15; // Taxe électronique
+        if (onSale) {
+            price -= price * 0.1; // Remise de 10%
+        }
+        return price;
+    }
+}
+
+
+public class BookProduct extends Product {
+    public BookProduct(double basePrice) {
+        super(basePrice);
+    }
+
+    @Override
+    public double calculatePrice() {
+        return basePrice + basePrice * 0.05; // Taxe livre
+    }
+}
+
+public class ClothingProduct extends Product {
+    private boolean isImported;
+
+    public ClothingProduct(double basePrice, boolean isImported) {
+        super(basePrice);
+        this.isImported = isImported;
+    }
+
+    @Override
+    public double calculatePrice() {
+        double price = basePrice + basePrice * 0.2; // Taxe vêtements
+        if (isImported) {
+            price += basePrice * 0.05; // Taxe d'importation
+        }
+        return price;
+    }
+}
+
+```
+
 ---
 
 ## Kata 4 : Gestion des Employés
