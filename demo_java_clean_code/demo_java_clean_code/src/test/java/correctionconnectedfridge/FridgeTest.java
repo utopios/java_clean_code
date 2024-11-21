@@ -48,4 +48,20 @@ public class FridgeTest {
         assertEquals("milk", item.getName());
     }
 
+    @Test
+    void testDisplayExpiredItems() {
+        Fridge fridge = new Fridge();
+        fridge.addItem("Milk", LocalDateTime.of(2023, 11, 19, 10, 0), "sealed");
+        fridge.addItem("Cheese", LocalDateTime.of(2023, 11, 20, 10, 0), "sealed");
+
+        String display = fridge.displayItems();
+
+        String expected = """
+        EXPIRED: Milk
+        Cheese: 1 day(s) remaining
+        """;
+
+        assertEquals(expected, display);
+    }
+
 }

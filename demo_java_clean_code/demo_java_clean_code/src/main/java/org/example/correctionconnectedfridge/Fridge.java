@@ -1,9 +1,12 @@
 package org.example.correctionconnectedfridge;
 
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Fridge {
 
@@ -28,5 +31,19 @@ public class Fridge {
 
     private Optional<Item> searchItemByItem(String itemsName) {
         return items.stream().filter(element -> element.getName().equals(itemsName)).findFirst();
+    }
+
+    public String displayItems() {
+        return items.stream()
+                .sorted(Comparator.comparing(Item::getExpirationDate))
+                .map(item -> {
+                    if (item.getExpirationDate().isBefore(LocalDateTime.now())) {
+                        return "EXPIRED: " + item.getName();
+                    } else {
+                        long daysRemaining = Duration.between(LocalDateTime.now(), item.getExpirationDate()).toDays();
+                        return item.getName() + ": " + daysRemaining + " day(s) remaining";
+                    }
+                })
+                .collect(Collectors.joining("\n"));
     }
 }
