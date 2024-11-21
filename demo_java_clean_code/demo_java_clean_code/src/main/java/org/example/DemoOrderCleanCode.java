@@ -30,7 +30,8 @@ public class DemoOrderCleanCode {
     }
 
     private double calculateTotal(Order order) {
-        return order.getItems().stream().mapToDouble(Item::getPrice).sum();
+        //return order.getItems().stream().mapToDouble(Item::getPrice).sum();
+        return 0;
     }
 
     private void printTotal(double total) {

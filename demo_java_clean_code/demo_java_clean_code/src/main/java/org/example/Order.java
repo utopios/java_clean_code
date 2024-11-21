@@ -1,5 +1,5 @@
 package org.example;
-import org.example.correctionconnectedfridge.Item;
+import org.example.Item;
 
 import java.util.List;
 public class Order {
