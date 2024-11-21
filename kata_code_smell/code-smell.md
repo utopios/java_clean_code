@@ -226,6 +226,80 @@ public class Payroll {
 }
 ```
 
+```java
+public abstract class Employee {
+    protected int hoursWorked;
+
+    public Employee(int hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
+    public abstract double calculateSalary();
+}
+
+public class Developer extends Employee {
+    private int yearsOfExperience;
+    private static final double HOURLY_RATE = 50;
+    private static final double BONUS = 1000;
+
+    public Developer(int hoursWorked, int yearsOfExperience) {
+        super(hoursWorked);
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    @Override
+    public double calculateSalary() {
+        double salary = hoursWorked * HOURLY_RATE;
+        if (yearsOfExperience > 5) {
+            salary += BONUS;
+        }
+        return salary;
+    }
+}
+
+public class Manager extends Employee {
+    private int teamSize;
+    private static final double HOURLY_RATE = 60;
+    private static final double BONUS = 2000;
+
+    public Manager(int hoursWorked, int teamSize) {
+        super(hoursWorked);
+        this.teamSize = teamSize;
+    }
+
+    @Override
+    public double calculateSalary() {
+        double salary = hoursWorked * HOURLY_RATE;
+        if (teamSize > 10) {
+            salary += BONUS;
+        }
+        return salary;
+    }
+}
+
+public class Intern extends Employee {
+    private static final double HOURLY_RATE = 20;
+
+    public Intern(int hoursWorked) {
+        super(hoursWorked);
+    }
+
+    @Override
+    public double calculateSalary() {
+        return hoursWorked * HOURLY_RATE;
+    }
+}
+
+public class Payroll {
+    public double calculateSalary(Employee employee) {
+        return employee.calculateSalary();
+    }
+}
+
+Payroll payroll = new Payroll();
+payroll.calculateSalary(new Developer(150, 10));
+payroll.calculateSalary(new Manager(150, 10));
+```
 ---
 
 ## Kata 5 : Analyse des Données
