@@ -31,3 +31,12 @@ L'application suit une architecture en couches typique :
 3. **Gérer les Exceptions** :
    - Ajouter une gestion appropriée des exceptions.
    - Créer des exceptions personnalisées si nécessaire,
+
+#### **Problème Identifiés**
+
+- **Code Non Testé**
+- **Couplage Fort** (1) FAIT
+- **Violation du Principe du SRP (Résponsabilité Unique)** (1)
+- **Pas d'Interfaces, pas d'injection de dépendances pas IOC** (1) FAIT
+- **Gestion des exceptions manquantes**
+- **Nommage peu clair** (1)

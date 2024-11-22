@@ -10,10 +10,18 @@ import com.example.app.entity.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskService {
-    private TaskDAO taskDAO = new TaskDAO();
-    private ProjectDAO projectDAO = new ProjectDAO();
-    private EmployeeDAO employeeDAO = new EmployeeDAO();
+public class TaskServiceImpl implements TaskService {
+    
+
+    private final GenericDAO<Task,Integer> taskDAO;
+    private final GenericDAO<Project,Integer> projectDAO;
+    private final GenericDAO<Employee,Integer> employeeDAO;
+
+    public TaskService(GenericDAO<Task,Integer> taskDAO, GenericDAO<employee,Integer> employeeDAO, GenericDAO<Project,Integer> taskDAO) {
+        this.taskDAO = taskDAO;
+        this.employeeDAO = employeeDAO;
+        this.projectDAO = projectDAO;
+    }
 
     public void createTask(String name, int projectId) {
         Task task = new Task();
