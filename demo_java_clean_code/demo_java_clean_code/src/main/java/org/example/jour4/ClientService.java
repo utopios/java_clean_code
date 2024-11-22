@@ -1,3 +1,4 @@
+/*
 public class ClientService {
     public void processClientData(Client client) {
         // Validation des données client
@@ -14,4 +15,4 @@ public class ClientService {
             throw new IllegalArgumentException("Données client invalides");
         }
     }
-}
+}*/

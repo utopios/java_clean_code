@@ -1,23 +1,23 @@
 package org.example.jour4.demeter;
 
-public class Customer {
-    private Account account;
+/*public class Customer {
+    //private Account account;
 
-    public double getBalance() {
+    *//*public double getBalance() {
         return account.getBalance();
-    }
+    }*//*
 }
 
 public class Order {
     private Customer customer;
 
-    public double getCustomerBalance() {
+    *//*public double getCustomerBalance() {
         return customer.getBalance();
-    }
+    }*//*
 }
 
 public class OrderService {
-    public double getCustomerBalance(Order order) {
+    *//*public double getCustomerBalance(Order order) {
         return order.getCustomerBalance();
-    }
-}
+    }*//*
+}*/

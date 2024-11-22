@@ -1,3 +1,4 @@
+/*
 public class ReportGenerator {
     private String title;
     private String content;
@@ -29,4 +30,4 @@ public class DatabaseReportGenerator extends ReportGenerator {
         super.generate();
         //Génération spécifique avec accès à la base de données
     }
-} 
+} */

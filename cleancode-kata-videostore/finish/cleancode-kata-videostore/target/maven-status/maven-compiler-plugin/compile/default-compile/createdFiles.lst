@@ -1,0 +1,8 @@
+com/cleancode/martinfowler/videostore/Observer.class
+com/cleancode/martinfowler/videostore/Movie.class
+com/cleancode/martinfowler/videostore/NewReleaseMovie.class
+com/cleancode/martinfowler/videostore/Rental.class
+com/cleancode/martinfowler/videostore/ChildrenMovie.class
+com/cleancode/martinfowler/videostore/Subject.class
+com/cleancode/martinfowler/videostore/Statement.class
+com/cleancode/martinfowler/videostore/RegularMovie.class
